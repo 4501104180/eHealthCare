@@ -2,7 +2,7 @@
   "name": "health-care",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "npm@9.6.7",
+  "packageManager": "pnpm@7.5.1",
   "dependencies": {
     "@date-io/date-fns": "^2.11.0",
     "@emotion/react": "^11.5.0",
