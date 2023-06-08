@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
+// config
+const { dbConfig } = require('./config');
+
 const connect = async () => {
-    try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/e_health_care', () => {
-            console.log('DB connection successful');
-        });
-    } catch (error) {
-        console.log(error);
-    }
+    const { mongoDbUri } = dbConfig;
+	try {
+		await mongoose.connect(mongoDbUri, () => {
+			console.log('DB connection successful');
+		});
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 module.exports = { connect };

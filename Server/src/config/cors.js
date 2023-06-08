@@ -1,12 +1,13 @@
-const cors = (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-        return res.status(200).json({});
-    }
-    next();
+const { corsConfig } = require('./config');
+
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (!origin || corsConfig.whiteList.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS'));
+		}
+	},
 };
 
-module.exports = cors;
+module.exports = corsOptions;
